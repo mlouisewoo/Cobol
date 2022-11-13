@@ -4,6 +4,10 @@
  */
 package my.fitnesstracker;
 
+import javax.swing.JOptionPane;
+import java.util.Formatter;
+        
+
 /**
  *
  * @author madlo
@@ -94,12 +98,32 @@ public class FitnessTracker extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField1.setText("ex: Taylor Swift");
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField2.setText("lbs");
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+        });
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField3.setText("inches");
+        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField3MouseClicked(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Daily Goals"));
 
@@ -112,9 +136,19 @@ public class FitnessTracker extends javax.swing.JFrame {
         jLabel7.setText("Carbohydrates");
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField5.setText("grams");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         jTextField6.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField6.setText("grams");
@@ -123,6 +157,11 @@ public class FitnessTracker extends javax.swing.JFrame {
         jTextField7.setText("grams");
 
         button1.setLabel("Calculate Macros");
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -174,6 +213,16 @@ public class FitnessTracker extends javax.swing.JFrame {
 
         jTextField8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField8.setText("years");
+        jTextField8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField8MouseClicked(evt);
+            }
+        });
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male", "Non-Binary", "Prefer Not to Say" }));
 
@@ -182,6 +231,11 @@ public class FitnessTracker extends javax.swing.JFrame {
         jLabel14.setText("Sex Assigned at Birth");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -443,7 +497,7 @@ public class FitnessTracker extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 415, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -457,6 +511,74 @@ public class FitnessTracker extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:
+       
+        double weight, height, age;
+        String sex;
+        
+        weight = Double.parseDouble(jTextField2.getText());
+        height = Double.parseDouble(jTextField3.getText());
+        age = Double.parseDouble(jTextField8.getText());
+        sex = (String)jComboBox2.getSelectedItem();
+        
+        Formatter formatter = new Formatter();
+        formatter.format("%.2f",weight);
+        formatter.format("%.2f",height);
+        formatter.format("%.2f",age);
+        
+        UserInfo macroOut = new UserInfo(weight, height, age, sex);
+        
+        
+        jTextField4.setText(Double.toString(macroOut.getCalories()));
+         jTextField5.setText(Double.toString(macroOut.getProtein()));
+          jTextField6.setText(Double.toString(macroOut.getFat()));
+           jTextField7.setText(Double.toString(macroOut.getCarbs()));
+      
+    }//GEN-LAST:event_button1ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+        
+        jTextField1.setText("");
+    }//GEN-LAST:event_jTextField1MouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+        
+        jTextField2.setText("");
+    }//GEN-LAST:event_jTextField2MouseClicked
+
+    private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
+        
+        jTextField3.setText("");
+    }//GEN-LAST:event_jTextField3MouseClicked
+
+    private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
+        
+        jTextField8.setText("");
+    }//GEN-LAST:event_jTextField8MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -466,7 +588,9 @@ public class FitnessTracker extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
+            
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -483,7 +607,7 @@ public class FitnessTracker extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FitnessTracker.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -497,7 +621,7 @@ public class FitnessTracker extends javax.swing.JFrame {
     private java.awt.Button button2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
