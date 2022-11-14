@@ -136,6 +136,7 @@ public class FitnessTracker extends javax.swing.JFrame {
         jLabel7.setText("Carbohydrates");
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jTextField4.setText(" grams");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -497,7 +498,7 @@ public class FitnessTracker extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -511,35 +512,31 @@ public class FitnessTracker extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-      
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
        
         double weight, height, age;
         String sex;
-        
+        try{
         weight = Double.parseDouble(jTextField2.getText());
         height = Double.parseDouble(jTextField3.getText());
         age = Double.parseDouble(jTextField8.getText());
         sex = (String)jComboBox2.getSelectedItem();
-        
-        Formatter formatter = new Formatter();
-        formatter.format("%.2f",weight);
-        formatter.format("%.2f",height);
-        formatter.format("%.2f",age);
-        
         UserInfo macroOut = new UserInfo(weight, height, age, sex);
-        
-        
-        jTextField4.setText(Double.toString(macroOut.getCalories()));
-         jTextField5.setText(Double.toString(macroOut.getProtein()));
-          jTextField6.setText(Double.toString(macroOut.getFat()));
-           jTextField7.setText(Double.toString(macroOut.getCarbs()));
+         jTextField4.setText(Double.toString(macroOut.getCalories()));
+        jTextField5.setText(Double.toString(macroOut.getProtein()));
+        jTextField6.setText(Double.toString(macroOut.getFat()));
+        jTextField7.setText(Double.toString(macroOut.getCarbs()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Error: Ensure that Name is of string type.\n  Weight, Height, Age are of number type.");
+        }
+        /**Formatter formatter = new Formatter();
+            formatter.format("%.2f",weight);
+            formatter.format("%.2f",height);
+            formatter.format("%.2f",age);
+        */
+       
       
     }//GEN-LAST:event_button1ActionPerformed
 
@@ -578,6 +575,12 @@ public class FitnessTracker extends javax.swing.JFrame {
         
         jTextField8.setText("");
     }//GEN-LAST:event_jTextField8MouseClicked
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+       
+
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
