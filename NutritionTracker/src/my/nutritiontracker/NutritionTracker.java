@@ -1,6 +1,16 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Description: Driver program that interacts with the user 
+ * <pre>
+ * Purpose: Implements the GUI with three tabs. Users can input their information
+ * and the program will calculate nutrition goals. The second tab allows the user
+ * to track the user's progress throughout the day and if they meet their nutrition goals
+ * . The third tab tracks the weight progress over time.
+ * Course: COMP-305
+ * </pre>
+ * @author Madeleine Woo, Enrique Garza, Kevin Rodriguez, Nick Marencik
+ * Date: Nov. 17, 2022
  */
 package my.nutritiontracker;
 

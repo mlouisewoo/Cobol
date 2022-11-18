@@ -1,6 +1,13 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Description: Represents user info and includes setters and getters for user info
+ * <pre>
+ * Purpose: Represents user info and includes setters and getters for user info
+ * Course: COMP-305
+ * </pre>
+ * @author Madeleine Woo, Enrique Garza, Kevin Rodriguez, Nick Marencik
+ * Date: Nov. 17, 2022
  */
 package my.nutritiontracker;
 
@@ -16,34 +23,67 @@ public class UserInfo {
     private double age;
     private String sex;
 
+    /**
+     * Returns weight in pounds
+     * @return weight
+     */
     public double getWeight() {
         return weight;
     }
 
+    /**
+     * Sets the weight 
+     * @param weight
+     */
     public void setWeight(double weight) {
         this.weight = weight;
     }
 
+    /**
+     * Returns the height in inches
+     * @return height
+     */
     public double getHeight() {
-        return weight;
+        return height;
     }
 
+    /**
+     * Sets the height in inches
+     * @param height 
+     */
     public void setHeight(double height) {
         this.height = height;
     }
 
+    /**
+     * Returns the age in years
+     * @return age
+     */
     public double getAge() {
         return age;
     }
 
+    /**
+     * Sets the age in years
+     * @param age 
+     */
     public void setAge(double age) {
         this.age = age;
     }
 
+    /**
+     * returns the sex assigned at birth
+     * as a string
+     * @return sex
+     */
     public String getSex() {
         return sex;
     }
 
+    /**
+     * sets the sex assigned at birth
+     * @param sex 
+     */
     public void setSex(String sex) {
         this.sex = sex;
     }
@@ -64,7 +104,7 @@ public class UserInfo {
     }
     /**
      *  
-     * @Pupose: Calculates the total amount of Calories for daily goal
+     * @Purpose: Calculates the total amount of Calories for daily goal
      * @return double totalCal
      */
     public double getCalories() {
@@ -81,23 +121,23 @@ public class UserInfo {
         return totalCal;
     }
     /**
-     * @Pupose Calculates the total amount of protein for daily goal
+     * @Purpose Calculates the total amount of protein for daily goal
      * @return double totalProtein
      */
     public double getProtein() {
         // ** returns daily protein intake based on 25 percent of you daily caloric intake */
         double kilograms = weight * 0.454;
         double cent = height * 2.54;
-        double totalProtien;
+        double totalProtein;
         if (sex == "Male") {
-            totalProtien = (1.2 * ((10 * kilograms) + (6.25 * cent) - (5 * age) + 5)) * 0.25 / 4;
+            totalProtein = (1.2 * ((10 * kilograms) + (6.25 * cent) - (5 * age) + 5)) * 0.25 / 4;
         } else {
-            totalProtien = (1.2 * ((10 * kilograms) + (6.25 * cent) - (5 * age) - 161)) * 0.25 / 4;
+            totalProtein = (1.2 * ((10 * kilograms) + (6.25 * cent) - (5 * age) - 161)) * 0.25 / 4;
         }
-        return totalProtien;
+        return totalProtein;
     }
      /**
-     * @Pupose Calculates the total amount of carbs for daily goal
+     * @Purpose Calculates the total amount of carbs for daily goal
      * @return double totalCarbs
      */
     public double getCarbs() {
@@ -113,7 +153,7 @@ public class UserInfo {
         return totalCarbs;
     }
     /**
-     * @Pupose Calculates the total amount of Fats for daily goal
+     * @Purpose Calculates the total amount of Fats for daily goal
      * @return double totalFats
      */
     public double getFat() {
