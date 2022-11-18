@@ -5,7 +5,6 @@
 package my.nutritiontracker;
 
 import javax.swing.JOptionPane;
-import java.util.Formatter;
         
 
 /**
@@ -512,7 +511,11 @@ public class NutritionTracker extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    /**
+     * @Purpose: Takes in all user data entered into the GUI, creates it into an object and calls the UserInfo methods
+     * to get the calculated micro nutrition.
+     * @param evt 
+     */
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
        
