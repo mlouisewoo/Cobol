@@ -20,6 +20,6 @@ package my.nutritiontracker;
  * @Return 
  * 
  */
-public record DailyProgress(double calories, double proteins, double carbohydrates, double fat) {
+public record DailyProgress(double calories, double proteins, double carbohydrates, double fat, double dailyCal, double dailyProtein, double dailyCarbs, double dailyFat) {
  
 }
