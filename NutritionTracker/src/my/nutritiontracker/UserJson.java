@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package my.nutritiontracker;
+import java.time.LocalDateTime; 
 
 /**
  * Converts UserData objects into a JSON string
@@ -13,12 +14,12 @@ public class UserJson {
      * Creates a JSON string to represent the user's data.
      * 
      * @param usr
-     * @return String json
+     * @return json
      */
     public static String createJson(UserInfo usr){
         String json = "{";
         //Name needed to be added here
-        json += "\t\"USERNAME\": {\n";
+        json += "\t\""+LocalDateTime.now()+"\": {\n";
         json += "\t\"weight\": "; json += String.valueOf(usr.getWeight()); json += ",\n";
         json += "\t\"height\": "; json += String.valueOf(usr.getHeight()); json += ",\n";
         json += "\t\"age\": "; json += String.valueOf(usr.getAge()); json += ",\n";

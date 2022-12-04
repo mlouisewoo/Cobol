@@ -4,16 +4,17 @@
  */
 package my.nutritiontracker;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
- * Takes in user data input and saves it as a JSON file for later retrieval
- * @author Madeleine Woo, Enrique Garza, Kevin Rodriguez, Nick Marencik
+ *
+ * @author Nick
  */
-public class SaveUserData {
+public class SaveDailyData {
+    
     
     public static void saveData(UserInfo usr){
         String saving_folder = "C:\\Users\\Nick\\Desktop\\"; //temp dir solution
@@ -21,9 +22,9 @@ public class SaveUserData {
         String filename = saving_folder + usr.getName().replaceAll("\\s", "").toLowerCase() + ".json";
         
 
-        BufferedWriter out;
+        FileWriter out;
         try{
-            out = new BufferedWriter(new FileWriter(filename, true));
+            out = new FileWriter(filename);
             
             System.out.println("Writing user data to file: "+filename);
             
@@ -47,11 +48,10 @@ public class SaveUserData {
             out.close();
         }
         catch (IOException e) {
-            System.out.println("Error in SaveUserData.saveData. Could not write to file.");
+            System.out.println("Error in SaveDailyData.saveData. Could not write to file.");
         }
         
     
     }
-    
     
 }

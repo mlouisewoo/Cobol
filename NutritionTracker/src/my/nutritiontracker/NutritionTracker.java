@@ -616,11 +616,22 @@ public class NutritionTracker extends javax.swing.JFrame {
      */
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         
+        
+        double weight, height, age;
+        String name, sex;
+        
+        name = jTextField1.getText();
+        weight = Double.parseDouble(jTextField2.getText());
+        height = Double.parseDouble(jTextField3.getText());
+        age = Double.parseDouble(jTextField8.getText());
+        sex = (String)jComboBox2.getSelectedItem();
+        this.user = new UserInfo(name, weight, height, age, sex);
+        
         //testing console prints
-        System.out.println(UserJson.createJson(user));
+        System.out.println(UserJson.createJson(this.user));
         
         //save data to file
-        SaveUserData.saveData(user);
+        SaveUserData.saveData(this.user);
         
         
     }//GEN-LAST:event_button2ActionPerformed
