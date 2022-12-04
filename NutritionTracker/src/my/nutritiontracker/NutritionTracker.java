@@ -23,7 +23,13 @@ import javax.swing.JOptionPane;
  * @author madlo
  */
 public class NutritionTracker extends javax.swing.JFrame {
+
     DailyProgress prog;
+
+
+    private UserInfo user;
+    
+
     /**
      * Creates new form FitnessTracker
      */
@@ -221,6 +227,11 @@ public class NutritionTracker extends javax.swing.JFrame {
         );
 
         button2.setLabel("Save Data");
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Age");
 
@@ -607,14 +618,17 @@ public class NutritionTracker extends javax.swing.JFrame {
         // TODO add your handling code here:
        
         double weight, height, age;
-        String sex;
+        String name, sex;
         try{
+
+        name = jTextField1.getText();
 
         weight = Double.parseDouble(jTextField2.getText());
         height = Double.parseDouble(jTextField3.getText());
         age = Double.parseDouble(jTextField8.getText());
         sex = (String)jComboBox2.getSelectedItem();
-        UserInfo macroOut = new UserInfo(weight, height, age, sex);
+        UserInfo macroOut = new UserInfo(name, weight, height, age, sex);
+        this.user = macroOut; //copy local user to universal user
          jTextField4.setText(Double.toString((double)(Math.round(macroOut.getCalories()*100))/100));
         jTextField5.setText(Double.toString((double)(Math.round(macroOut.getProtein()*100))/100));
         jTextField6.setText(Double.toString((double)(Math.round(macroOut.getFat()*100))/100));
@@ -675,6 +689,7 @@ public class NutritionTracker extends javax.swing.JFrame {
         // Maybe later: open popup window with bar charts
         // For now: loads and displays text in the text area
     }//GEN-LAST:event_jButton1ActionPerformed
+
 
     private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
          jTextField19.setText("");
@@ -738,6 +753,23 @@ public class NutritionTracker extends javax.swing.JFrame {
     private void jTextField21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField21MouseClicked
         jTextField21.setText("");
     }//GEN-LAST:event_jTextField21MouseClicked
+
+    
+    /**
+     * Saves data to the user's file.
+     * @param evt 
+     */
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+        
+        //testing console prints
+        System.out.println(UserJson.createJson(user));
+        
+        //save data to file
+        SaveUserData.saveData(user);
+        
+        
+    }//GEN-LAST:event_button2ActionPerformed
+
 
     /**
      * @param args the command line arguments

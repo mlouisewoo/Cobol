@@ -18,11 +18,29 @@ package my.nutritiontracker;
 public class UserInfo {
 
     //** UserInfo Class */
+    private String name;
     private double weight;
     private double height;
     private double age;
     private String sex;
 
+    /**
+     * Returns user's name
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the user name 
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+   
     /**
      * Returns weight in pounds
      * @return weight
@@ -90,13 +108,15 @@ public class UserInfo {
 
     /**
      * @Purpose: UserInfo constructor
+     * @param name
      * @param weight
      * @param height
      * @param age
      * @param sex
      */
-    public UserInfo(double weight, double height, double age, String sex) {
+    public UserInfo(String name, double weight, double height, double age, String sex) {
         //* UserInfo class takes in 4 parameters from our User*/
+        this.name = name;
         this.weight = weight;
         this.height = height;
         this.age = age;
