@@ -25,6 +25,10 @@ import javax.swing.JOptionPane;
 public class NutritionTracker extends javax.swing.JFrame {
 
     DailyProgress prog;
+    double dailyCal = 0.0;
+    double dailyProtein = 0.0;
+    double dailyCarbs = 0.0;
+    double dailyFat = 0.0;
 
 
     private UserInfo user;
@@ -317,7 +321,7 @@ public class NutritionTracker extends javax.swing.JFrame {
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -464,20 +468,35 @@ public class NutritionTracker extends javax.swing.JFrame {
 
         jLabel13.setText("Carbs");
 
-        jTextField9.setText("0.00%");
+        jTextField9.setText("0.0%");
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
             }
         });
 
-        jTextField10.setText("0.00%");
+        jTextField10.setText("0.0%");
 
-        jTextField11.setText("0.00%");
+        jTextField11.setText("0.0%");
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
 
-        jTextField12.setText("0.00%");
+        jTextField12.setText("0.0%");
+        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField12ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Reset Day");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -543,7 +562,7 @@ public class NutritionTracker extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -600,10 +619,7 @@ public class NutritionTracker extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jTabbedPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
         );
 
         pack();
@@ -615,7 +631,6 @@ public class NutritionTracker extends javax.swing.JFrame {
      * @param evt 
      */
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // TODO add your handling code here:
        
         double weight, height, age;
         String name, sex;
@@ -633,7 +648,7 @@ public class NutritionTracker extends javax.swing.JFrame {
         jTextField5.setText(Double.toString((double)(Math.round(macroOut.getProtein()*100))/100));
         jTextField6.setText(Double.toString((double)(Math.round(macroOut.getFat()*100))/100));
         jTextField7.setText(Double.toString((double)(Math.round(macroOut.getCarbs()*100))/100));
-        prog = new DailyProgress(macroOut.getCalories(),macroOut.getProtein(), macroOut.getCarbs(),macroOut.getFat());
+        prog = new DailyProgress(macroOut.getCalories(),macroOut.getProtein(), macroOut.getCarbs(),macroOut.getFat(),0.0, 0.0, 0.0, 0.0);
         
        
        
@@ -655,12 +670,12 @@ public class NutritionTracker extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        
+
         jTextField1.setText("");
     }//GEN-LAST:event_jTextField1MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        jTextField1.setText("");
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
@@ -700,25 +715,24 @@ public class NutritionTracker extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         double cal, protein, carb, fat;
   
         try{
-
-        cal = Double.parseDouble(jTextField18.getText());
-        protein = Double.parseDouble(jTextField19.getText());
-        carb = Double.parseDouble(jTextField20.getText());
-        fat = Double.parseDouble(jTextField21.getText());
+        dailyCal = Double.parseDouble(jTextField18.getText()) + dailyCal;
+        dailyProtein = Double.parseDouble(jTextField19.getText()) + dailyProtein;
+        dailyCarbs = Double.parseDouble(jTextField20.getText()) + dailyCarbs;
+        dailyFat = Double.parseDouble(jTextField21.getText()) + dailyFat;
+        
         
         DecimalFormat df = new DecimalFormat("##.##%");
-        double outCal = (cal / prog.calories());
-        double outProtein = (protein / prog.proteins());
-        double outCarb = (carb / prog.carbohydrates());
-        double outFat = (fat / prog.fat());
+        double outCal = (dailyCal / prog.calories());
+        double outProtein = (dailyProtein / prog.proteins());
+        double outCarb = (dailyCarbs / prog.carbohydrates());
+        double outFat = (dailyFat / prog.fat());
         
         jTextField9.setText(df.format(outCal));
         jTextField10.setText(df.format(outProtein));
-        jTextField11.setText(df.format(outCarb));
-        jTextField12.setText(df.format(outFat));
+        jTextField12.setText(df.format(outCarb));
+        jTextField11.setText(df.format(outFat));
         
         
         }catch(NumberFormatException e){
@@ -780,6 +794,28 @@ public class NutritionTracker extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_button2ActionPerformed
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField12ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        dailyCal = 0.00;
+        dailyProtein = 0.00;
+        dailyCarbs = 0.00;
+        dailyFat = 0.00;
+        
+        jTextField9.setText(Double.toString(dailyCal) + "%");
+        jTextField10.setText(Double.toString(dailyProtein) + "%");
+        jTextField12.setText(Double.toString(dailyCarbs)+ "%");
+        jTextField11.setText(Double.toString(dailyFat)+ "%");
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     /**
