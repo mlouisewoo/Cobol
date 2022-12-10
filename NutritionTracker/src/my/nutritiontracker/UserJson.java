@@ -4,6 +4,9 @@
  */
 package my.nutritiontracker;
 import java.time.LocalDateTime; 
+import java.io.File;  
+import java.io.FileNotFoundException; 
+import java.util.Scanner;
 
 /**
  * Converts UserData objects into a JSON string
@@ -27,6 +30,83 @@ public class UserJson {
         json += "},";
         return(json);
     }
+    
+    public static DailyProgress loadDaily(String name){
+        double dailyCal = 0.0;
+        double dailyProtein = 0.0;
+        double dailyCarbs = 0.0;
+        double dailyFat = 0.0;
+        
+        String saving_folder = "C:\\Users\\Nick\\Desktop\\"; //temp dir solution
+        String filename = saving_folder + name.replaceAll("\\s", "").toLowerCase() + "_daily.json";
+        System.out.println("Checking for file: "+filename);
+        //check file for user exists
+        //File f = new File(filename);
+        //if(!f.exists()){ 
+            System.out.println("I found the file!");
+            try {
+            File myObj = new File(filename);
+             Scanner myReader = new Scanner(myObj);
+             //while (myReader.hasNextLine()) {
+                String data = myReader.nextLine(); //{
+                dailyCal = Double.parseDouble( myReader.nextLine().replaceAll("\t\"cal\":", "").replaceAll(",", "") );
+                dailyProtein = Double.parseDouble( myReader.nextLine().replaceAll("\t\"prot\":", "").replaceAll(",", "") );
+                dailyCarbs    = Double.parseDouble( myReader.nextLine().replaceAll("\t\"carb\":", "").replaceAll(",", "") );
+                dailyFat   = Double.parseDouble( myReader.nextLine().replaceAll("\t\"fat\":", "").replaceAll(",", "") );
+                
+              //}
+                 myReader.close();
+          } catch (FileNotFoundException e) {
+            System.out.println("Could not find user file.");
+           }
+            DailyProgress prog = new DailyProgress(0, 0, 0,0, dailyCal, dailyProtein, dailyCarbs, dailyFat);
+            return(prog);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    public static UserInfo loadUser(String name){
+        String sex="";
+        double weight=0, height=0, age=0;
+        
+        
+        String saving_folder = "C:\\Users\\Nick\\Desktop\\"; //temp dir solution
+        String filename = saving_folder + name.replaceAll("\\s", "").toLowerCase() + ".json";
+        System.out.println("Checking for file: "+filename);
+        //check file for user exists
+        //File f = new File(filename);
+        //if(!f.exists()){ 
+            System.out.println("I found the file!");
+            try {
+            File myObj = new File(filename);
+             Scanner myReader = new Scanner(myObj);
+             //while (myReader.hasNextLine()) {
+                String data = myReader.nextLine(); //{
+                weight = Double.parseDouble( myReader.nextLine().replaceAll("\t\"weight\":", "").replaceAll(",", "") );
+                height = Double.parseDouble( myReader.nextLine().replaceAll("\t\"height\":", "").replaceAll(",", "") );
+                age    = Double.parseDouble( myReader.nextLine().replaceAll("\t\"age\":", "").replaceAll(",", "") );
+                sex    = myReader.nextLine().replaceAll("\t\"sex\":", "").replaceAll(",", "") ;
+                System.out.println(weight +" " +height+" "+age);
+              //}
+        myReader.close();
+          } catch (FileNotFoundException e) {
+            System.out.println("Could not find user file.");
+           }
+            
+            
+            
+            
+        //}
+        
+            UserInfo usr = new UserInfo(name, weight, height, age, sex);
+            return(usr);
+    }
+    
     
     
 }
