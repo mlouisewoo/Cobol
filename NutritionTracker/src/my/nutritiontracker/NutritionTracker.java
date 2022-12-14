@@ -849,6 +849,11 @@ public class NutritionTracker extends javax.swing.JFrame {
         jTextField2.setText(String.valueOf(user.getWeight()));
         jTextField3.setText(String.valueOf(user.getHeight()));
         jTextField8.setText(String.valueOf(user.getAge()));
+        if(user.getSex() == "Female"){
+            jComboBox2.setSelectedIndex(0);
+        } else{
+            jComboBox2.setSelectedIndex(1);
+        }
         jComboBox2.setSelectedItem(user.getSex());
         
         
