@@ -18,15 +18,13 @@ public class SaveUserData {
     
     
     public static void saveUser(UserInfo usr){
-        String saving_folder = "C:\\Users\\Nick\\Desktop\\"; //temp dir solution
+        String saving_folder = ""; //temp dir solution
         //generate filename using username
         String filename = saving_folder + usr.getName().replaceAll("\\s", "").toLowerCase() + ".json";
         
-
         FileWriter out;
         try{
             out = new FileWriter(filename);
-            
             System.out.println("Writing user data to file: "+filename);
             
             //check if the file exists.  if not, start by adding a beginning parenthesis
@@ -57,7 +55,7 @@ public class SaveUserData {
     
     
     public static void saveDaily(UserInfo usr, double cal, double prot, double carb, double fat){
-        String saving_folder = "C:\\Users\\Nick\\Desktop\\"; //temp dir solution
+        String saving_folder = ""; //temp dir solution
         //generate filename using username
         String filename = saving_folder + usr.getName().replaceAll("\\s", "").toLowerCase() + "_daily.json";
         

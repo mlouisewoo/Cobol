@@ -25,7 +25,7 @@ import javax.swing.plaf.ProgressBarUI;
  */
 public class NutritionTracker extends javax.swing.JFrame {
 
-    DailyProgress prog;
+    DailyProgress prog = new DailyProgress(0,0,0,0,0,0,0,0);
     double dailyCal = 0.0;
     double dailyProtein = 0.0;
     double dailyCarbs = 0.0;
@@ -718,6 +718,12 @@ public class NutritionTracker extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Maybe later: open popup window with bar charts
         // For now: loads and displays text in the text area
+        
+        
+        String weight_list_string = LoadJson.loadWeightList(this.user.getName()) ;
+        System.out.println(weight_list_string);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -804,11 +810,11 @@ public class NutritionTracker extends javax.swing.JFrame {
         this.user = new UserInfo(name, weight, height, age, sex);
         
         //testing console prints
-        System.out.println(UserJson.createJson(this.user));
+        //System.out.println(UserJson.createJson(this.user));
         
         //save data to file
-        SaveUserData.saveUser(this.user);
-        
+        SaveJson.saveUser(this.user);
+        SaveJson.saveWeight(this.user);
         
     }//GEN-LAST:event_button2ActionPerformed
 
@@ -847,7 +853,7 @@ public class NutritionTracker extends javax.swing.JFrame {
         
         
         //load in cals and stuff
-        DailyProgress p = UserJson.loadDaily(jTextField1.getText());
+        DailyProgress p = LoadJson.loadDaily(jTextField1.getText());
         dailyCal = p.dailyCal();
         dailyProtein = p.dailyProtein();
         dailyCarbs = p.dailyCarbs();

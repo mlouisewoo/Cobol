@@ -3,34 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package my.nutritiontracker;
-import java.time.LocalDateTime; 
-import java.io.File;  
-import java.io.FileNotFoundException; 
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Converts UserData objects into a JSON string
- * @author Madeleine Woo, Enrique Garza, Kevin Rodriguez, Nick Marencik
+ *
+ * @author Nick
  */
-public class UserJson {
-    
-    /**
-     * Creates a JSON string to represent the user's data.
-     * 
-     * @param usr
-     * @return json
-     */
-    public static String createJson(UserInfo usr){
-        String json = "{";
-        //Name needed to be added here
-        json += "\t\""+LocalDateTime.now()+"\": {\n";
-        json += "\t\"weight\": "; json += String.valueOf(usr.getWeight()); json += ",\n";
-        json += "\t\"height\": "; json += String.valueOf(usr.getHeight()); json += ",\n";
-        json += "\t\"age\": "; json += String.valueOf(usr.getAge()); json += ",\n";
-        json += "\t\"sex\": "; json += usr.getSex(); json += "\n";
-        json += "},";
-        return(json);
-    }
+public class LoadJson {
     
     /**
      * Loads the current daily carbs, fat, cal, protein from the file that contains it.
@@ -122,6 +104,30 @@ public class UserJson {
             return(usr);
     }
     
+    
+    
+    public static String loadWeightList(String name){
+        String saving_folder = ""; //temp dir solution
+        String filename = saving_folder + name.replaceAll("\\s", "").toLowerCase() + "_weight.json";
+    
+        String weight_string = "";
+            try {
+            File myObj = new File(filename);
+             Scanner myReader = new Scanner(myObj);
+             while (myReader.hasNextLine()) {
+                String weight_date = myReader.nextLine().replace(": {", "");
+                String weight = myReader.nextLine().replaceAll("\t\"weight\":", "").replaceAll(",", "");
+                myReader.nextLine(); // skip over the closing brace
+                weight_string += weight_date + "\t" + weight + "\n";
+              }
+        myReader.close();
+          } catch (FileNotFoundException e) {
+            System.out.println("Could not find user file.");
+           }
+        System.out.println("weight_string");
+        return(weight_string);
+    
+    }
     
     
 }
