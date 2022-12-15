@@ -646,7 +646,9 @@ public class NutritionTracker extends javax.swing.JFrame {
 
     
     
-    
+    /**
+     * Calculates the macro values based on the current values in the input fields.
+     */
     private void calculateMacros(){
         double weight, height, age;
         String name, sex, gender;

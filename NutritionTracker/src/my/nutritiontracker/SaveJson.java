@@ -21,7 +21,7 @@ public class SaveJson {
     *@param usr a UserInfo object containing user's information
     */
     public static void saveUser(UserInfo usr){
-        String saving_folder = ""; //temp dir solution
+        String saving_folder = ""; 
         //generate filename using username
         String filename = saving_folder + usr.getName().replaceAll("\\s", "").toLowerCase() + ".json";
         
@@ -32,7 +32,6 @@ public class SaveJson {
             
             
             String json = "{";
-            //Name needed to be added here
             json += "\t\""+LocalDateTime.now()+"\": {\n";
             json += "\t\"weight\": "; json += String.valueOf(usr.getWeight()); json += ",\n";
             json += "\t\"height\": "; json += String.valueOf(usr.getHeight()); json += ",\n";
@@ -41,15 +40,9 @@ public class SaveJson {
             json += "\t\"gender\": \""; json += usr.getGender(); json += "\"\n";
             json += "}";
             
-            
             out.write(json);
             
-            //TODO: Write the last output file
-            
             out.close();
-                 
-            
-            
         }
         catch (IOException e) {
             System.out.println("Error in SaveDailyData.saveData. Could not write to file.");
@@ -57,9 +50,6 @@ public class SaveJson {
         
     
     }//saveuser
-    
-    
-    
     
     
     /**
@@ -94,15 +84,9 @@ public class SaveJson {
             String jstr = "{\n\t\"cal\":"+String.valueOf(cal)+",\n\t\"prot\":"+String.valueOf(prot)+",\n\t\"carb\":"+String.valueOf(carb)+",\n\t\"fat\":"+String.valueOf(fat)+"\n}";
             System.out.println(jstr);
             out.write(jstr);
-            
-            //place for writing DailyProgress with the DailyJson class.
-            
-            //TODO: Write the last output file
-            
+
             out.close();
-                 
-            
-            
+              
         }
         catch (IOException e) {
             System.out.println("Error in SaveDailyData.saveData. Could not write to file.");

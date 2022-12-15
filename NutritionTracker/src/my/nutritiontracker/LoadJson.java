@@ -31,27 +31,22 @@ public class LoadJson {
         String saving_folder = ""; //temp dir solution
         String filename = saving_folder + name.replaceAll("\\s", "").toLowerCase() + "_daily.json";
         System.out.println("Checking for file: "+filename);
-        //check file for user exists
-        //File f = new File(filename);
-        //if(!f.exists()){ 
-            System.out.println("I found the file!");
-            try {
+        try {
             File myObj = new File(filename);
-             Scanner myReader = new Scanner(myObj);
-             //while (myReader.hasNextLine()) {
-                String data = myReader.nextLine(); //{
-                dailyCal = Double.parseDouble( myReader.nextLine().replaceAll("\t\"cal\":", "").replaceAll(",", "") );
-                dailyProtein = Double.parseDouble( myReader.nextLine().replaceAll("\t\"prot\":", "").replaceAll(",", "") );
-                dailyCarbs    = Double.parseDouble( myReader.nextLine().replaceAll("\t\"carb\":", "").replaceAll(",", "") );
-                dailyFat   = Double.parseDouble( myReader.nextLine().replaceAll("\t\"fat\":", "").replaceAll(",", "") );
-                
-              //}
-                 myReader.close();
-          } catch (FileNotFoundException e) {
+            Scanner myReader = new Scanner(myObj);
+        
+            String data = myReader.nextLine();
+            dailyCal = Double.parseDouble( myReader.nextLine().replaceAll("\t\"cal\":", "").replaceAll(",", "") );
+            dailyProtein = Double.parseDouble( myReader.nextLine().replaceAll("\t\"prot\":", "").replaceAll(",", "") );
+            dailyCarbs    = Double.parseDouble( myReader.nextLine().replaceAll("\t\"carb\":", "").replaceAll(",", "") );
+            dailyFat   = Double.parseDouble( myReader.nextLine().replaceAll("\t\"fat\":", "").replaceAll(",", "") );
+            
+            myReader.close();
+        } catch (FileNotFoundException e) {
             System.out.println("Could not find user file.");
-           }
-            DailyProgress prog = new DailyProgress(0, 0, 0,0, dailyCal, dailyProtein, dailyCarbs, dailyFat);
-            return(prog);
+        }
+        DailyProgress prog = new DailyProgress(0, 0, 0,0, dailyCal, dailyProtein, dailyCarbs, dailyFat);
+        return(prog);
     }
     
     
