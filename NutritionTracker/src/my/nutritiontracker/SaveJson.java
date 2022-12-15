@@ -12,7 +12,7 @@ import java.io.BufferedWriter;
 
 /**
  *
- * @author Nick
+ * @author All
  */
 public class SaveJson {
     
@@ -27,17 +27,6 @@ public class SaveJson {
             out = new FileWriter(filename);
             System.out.println("Writing user data to file: "+filename);
             
-            //check if the file exists.  if not, start by adding a beginning parenthesis
-            File f = new File(filename);
-            if(!f.exists()){
-                out.write("{");
-            }
-            else{ //remove trailing parenthesis
-                //TODO: add last parenthesis {
-            }
-            
-            //out.write(UserJson.createJson(usr));
-            //place for writing DailyProgress with the DailyJson class.
             
             String json = "{";
             //Name needed to be added here
@@ -92,7 +81,7 @@ public class SaveJson {
                 //TODO: add last parenthesis {
             }
             
-            String jstr = "{\n\tcal:"+String.valueOf(cal)+",\n\tprot:"+String.valueOf(prot)+",\n\tcarb:"+String.valueOf(carb)+",\n\tfat:"+String.valueOf(fat)+"\n}";
+            String jstr = "{\n\t\"cal\":"+String.valueOf(cal)+",\n\t\"prot\":"+String.valueOf(prot)+",\n\t\"carb\":"+String.valueOf(carb)+",\n\t\"fat\":"+String.valueOf(fat)+"\n}";
             System.out.println(jstr);
             out.write(jstr);
             

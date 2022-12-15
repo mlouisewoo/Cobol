@@ -761,7 +761,7 @@ public class NutritionTracker extends javax.swing.JFrame {
         jTextField12.setText(df.format(outCarb));
         jTextField11.setText(df.format(outFat));
         
-        SaveUserData.saveDaily(user, dailyCal, dailyProtein, dailyCarbs, dailyFat);
+        SaveJson.saveDaily(user, dailyCal, dailyProtein, dailyCarbs, dailyFat);
         
         
         }catch(NumberFormatException e){
@@ -879,10 +879,7 @@ public class NutritionTracker extends javax.swing.JFrame {
         } else { // always default to "Female"... it is the default on the dropdown
             jComboBox1.setSelectedIndex(0);
         }
-        
-      
-        
-        
+                
         //load in cals and stuff
         DailyProgress p = LoadJson.loadDaily(jTextField1.getText());
         dailyCal = p.dailyCal();
