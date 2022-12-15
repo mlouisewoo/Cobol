@@ -857,6 +857,9 @@ public class NutritionTracker extends javax.swing.JFrame {
         jTextField12.setText(Double.toString(dailyCarbs)+ "%");
         jTextField11.setText(Double.toString(dailyFat)+ "%");
         
+        
+        SaveJson.saveDaily(user, dailyCal, dailyProtein, dailyCarbs, dailyFat);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
