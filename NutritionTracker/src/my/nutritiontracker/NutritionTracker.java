@@ -591,7 +591,7 @@ public class NutritionTracker extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Daily Tracker", jPanel6);
 
-        jButton1.setText("Display Graph");
+        jButton1.setText("Display Weight Progress");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -600,7 +600,6 @@ public class NutritionTracker extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Date\t\tWeight(lbs)\t\tGoal\n\n10/7/22\t\t90\t\t100\n10/14/22\t\t91\t\t100\n10/21/22\t\t92\t\t100\n10/28/22\t\t92\t\t100\n\n11/1/22\t\t92\t\t100\n11/8/22\t\t93\t\t100\n11/15/22\t\t92\t\t100\n\n\t\t\t\t");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -608,13 +607,13 @@ public class NutritionTracker extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(jButton1)
-                .addContainerGap(171, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(126, 126, 126))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -721,13 +720,10 @@ public class NutritionTracker extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        // Maybe later: open popup window with bar charts
-        // For now: loads and displays text in the text area
-        
+        // displays weight progress over time
         
         String weight_list_string = LoadJson.loadWeightList(this.user.getName()) ;
-        System.out.println(weight_list_string);
+        jTextArea1.setText("Date \t \t \t Weight (lbs)\n" + weight_list_string);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -119,7 +119,7 @@ public class LoadJson {
                 String weight_date = myReader.nextLine().replace(": {", "");
                 String weight = myReader.nextLine().replaceAll("\t\"weight\":", "").replaceAll(",", "");
                 myReader.nextLine(); // skip over the closing brace
-                weight_string += weight_date + "\t" + weight + "\n";
+                weight_string += weight_date + "\t\t\t" + weight + "\n";
               }
         myReader.close();
           } catch (FileNotFoundException e) {
