@@ -255,6 +255,11 @@ public class NutritionTracker extends javax.swing.JFrame {
         });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male", "Non-Binary", "Prefer Not to Say" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Gender");
 
@@ -648,7 +653,7 @@ public class NutritionTracker extends javax.swing.JFrame {
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
        
         double weight, height, age;
-        String name, sex;
+        String name, sex, gender;
         try{
 
         name = jTextField1.getText();
@@ -657,7 +662,8 @@ public class NutritionTracker extends javax.swing.JFrame {
         height = Double.parseDouble(jTextField3.getText());
         age = Double.parseDouble(jTextField8.getText());
         sex = (String)jComboBox2.getSelectedItem();
-        UserInfo macroOut = new UserInfo(name, weight, height, age, sex);
+        gender = (String)jComboBox2.getSelectedItem();
+        UserInfo macroOut = new UserInfo(name, weight, height, age, sex, gender);
         this.user = macroOut; //copy local user to universal user
          jTextField4.setText(Double.toString((double)(Math.round(macroOut.getCalories()*100))/100));
         jTextField5.setText(Double.toString((double)(Math.round(macroOut.getProtein()*100))/100));
@@ -800,14 +806,17 @@ public class NutritionTracker extends javax.swing.JFrame {
         
         
         double weight, height, age;
-        String name, sex;
+        String name, sex, gender;
         
         name = jTextField1.getText();
         weight = Double.parseDouble(jTextField2.getText());
         height = Double.parseDouble(jTextField3.getText());
         age = Double.parseDouble(jTextField8.getText());
         sex = (String)jComboBox2.getSelectedItem();
-        this.user = new UserInfo(name, weight, height, age, sex);
+        gender = (String)jComboBox1.getSelectedItem();
+        this.user = new UserInfo(name, weight, height, age, sex, gender);
+        
+        System.out.println("Gender: " + gender);
         
         //testing console prints
         //System.out.println(UserJson.createJson(this.user));
@@ -843,18 +852,35 @@ public class NutritionTracker extends javax.swing.JFrame {
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // Load in all of the user's data
         
-        user = UserJson.loadUser(jTextField1.getText());
+        this.user = LoadJson.loadUser(jTextField1.getText());
         
         
         jTextField2.setText(String.valueOf(user.getWeight()));
         jTextField3.setText(String.valueOf(user.getHeight()));
         jTextField8.setText(String.valueOf(user.getAge()));
-        if(user.getSex() == "Female"){
-            jComboBox2.setSelectedIndex(0);
-        } else{
+        
+        System.out.println("Trying to set: gender = "+this.user.getGender() + " and sex = "+this.user.getSex());
+        
+        
+        
+        //set the dropdowns to the proper positions
+        if(this.user.getSex().equals("Male")){
             jComboBox2.setSelectedIndex(1);
+        } else{
+            jComboBox2.setSelectedIndex(0);
         }
-        jComboBox2.setSelectedItem(user.getSex());
+        
+        if(this.user.getGender().equals("Male")){
+            jComboBox1.setSelectedIndex(1);
+        } else if(this.user.getGender().equals("Non-Binary")){
+            jComboBox1.setSelectedIndex(2);
+        } else if(this.user.getGender().equals("Prefer Not to Say")){
+            jComboBox1.setSelectedIndex(3);
+        } else { // always default to "Female"... it is the default on the dropdown
+            jComboBox1.setSelectedIndex(0);
+        }
+        
+      
         
         
         //load in cals and stuff
@@ -878,6 +904,10 @@ public class NutritionTracker extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_button3ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     /**

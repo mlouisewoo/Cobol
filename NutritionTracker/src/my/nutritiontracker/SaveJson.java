@@ -45,7 +45,8 @@ public class SaveJson {
             json += "\t\"weight\": "; json += String.valueOf(usr.getWeight()); json += ",\n";
             json += "\t\"height\": "; json += String.valueOf(usr.getHeight()); json += ",\n";
             json += "\t\"age\": "; json += String.valueOf(usr.getAge()); json += ",\n";
-            json += "\t\"sex\": \""; json += usr.getSex(); json += "\"\n";
+            json += "\t\"sex\": \""; json += usr.getSex(); json += "\",\n";
+            json += "\t\"gender\": \""; json += usr.getGender(); json += "\"\n";
             json += "}";
             
             

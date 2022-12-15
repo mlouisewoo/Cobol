@@ -118,7 +118,7 @@ public class UserJson {
             
         //}
         
-            UserInfo usr = new UserInfo(name, weight, height, age, sex);
+            UserInfo usr = new UserInfo(name, weight, height, age, sex, "");
             return(usr);
     }
     

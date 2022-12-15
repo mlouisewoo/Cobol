@@ -68,7 +68,7 @@ public class LoadJson {
      * @return 
      */
     public static UserInfo loadUser(String name){
-        String sex="";
+        String sex="", gender = "";
         double weight=0, height=0, age=0;
         
         
@@ -87,10 +87,11 @@ public class LoadJson {
                 weight = Double.parseDouble( myReader.nextLine().replaceAll("\t\"weight\":", "").replaceAll(",", "") );
                 height = Double.parseDouble( myReader.nextLine().replaceAll("\t\"height\":", "").replaceAll(",", "") );
                 age    = Double.parseDouble( myReader.nextLine().replaceAll("\t\"age\":", "").replaceAll(",", "") );
-                sex    = myReader.nextLine().replaceAll("\t\"sex\":", "").replaceAll(",", "") ;
-                System.out.println(weight +" " +height+" "+age);
+                sex    = myReader.nextLine().replaceAll("\t\"sex\": ", "").replaceAll(",", "").replaceAll("\"", "") ;
+                gender = myReader.nextLine().replaceAll("\t\"gender\": ", "").replaceAll(",", "").replaceAll("\"", "") ;
+                System.out.println(weight +" " +height+" "+age+" "+sex+" "+gender);
               //}
-        myReader.close();
+                myReader.close();
           } catch (FileNotFoundException e) {
             System.out.println("Could not find user file.");
            }
@@ -99,8 +100,8 @@ public class LoadJson {
             
             
         //}
-        
-            UserInfo usr = new UserInfo(name, weight, height, age, sex);
+
+            UserInfo usr = new UserInfo(name, weight, height, age, sex, gender);
             return(usr);
     }
     

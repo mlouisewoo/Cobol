@@ -23,6 +23,7 @@ public class UserInfo {
     private double height;
     private double age;
     private String sex;
+    private String gender;
 
     /**
      * Returns user's name
@@ -105,6 +106,25 @@ public class UserInfo {
     public void setSex(String sex) {
         this.sex = sex;
     }
+    
+    /**
+     * returns the gender
+     * as a string
+     * @return sex
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * sets the gender
+     * @param sex 
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    
+    
 
     /**
      * @Purpose: UserInfo constructor
@@ -114,13 +134,14 @@ public class UserInfo {
      * @param age
      * @param sex
      */
-    public UserInfo(String name, double weight, double height, double age, String sex) {
+    public UserInfo(String name, double weight, double height, double age, String sex, String gender) {
         //* UserInfo class takes in 4 parameters from our User*/
         this.name = name;
         this.weight = weight;
         this.height = height;
         this.age = age;
         this.sex = sex;
+        this.gender = gender;
     }
     /**
      *  
