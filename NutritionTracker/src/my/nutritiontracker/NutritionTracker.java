@@ -644,13 +644,10 @@ public class NutritionTracker extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @Purpose: Takes in all user data entered into the GUI, creates it into an object and calls the UserInfo methods
-     * to get the calculated micro nutrition.
-     * @param evt 
-     */
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-       
+    
+    
+    
+    private void calculateMacros(){
         double weight, height, age;
         String name, sex, gender;
         try{
@@ -675,6 +672,18 @@ public class NutritionTracker extends javax.swing.JFrame {
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Error: Ensure that Name is of string type.\n  Weight, Height, Age are of number type.");
         }
+    }
+        
+    
+    
+    
+    /**
+     * @Purpose: Takes in all user data entered into the GUI, creates it into an object and calls the UserInfo methods
+     * to get the calculated micro nutrition.
+     * @param evt 
+     */
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+       calculateMacros();
     }//GEN-LAST:event_button1ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -821,6 +830,9 @@ public class NutritionTracker extends javax.swing.JFrame {
         SaveJson.saveUser(this.user);
         SaveJson.saveWeight(this.user);
         
+        
+        calculateMacros();
+        
     }//GEN-LAST:event_button2ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
@@ -876,6 +888,8 @@ public class NutritionTracker extends javax.swing.JFrame {
             jComboBox1.setSelectedIndex(0);
         }
                 
+        calculateMacros();
+        
         //load in cals and stuff
         DailyProgress p = LoadJson.loadDaily(jTextField1.getText());
         dailyCal = p.dailyCal();
@@ -895,6 +909,7 @@ public class NutritionTracker extends javax.swing.JFrame {
         jTextField12.setText(df.format(outCarb));
         jTextField11.setText(df.format(outFat));
         
+    
         
     }//GEN-LAST:event_button3ActionPerformed
 
