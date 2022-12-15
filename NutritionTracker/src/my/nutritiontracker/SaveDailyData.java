@@ -11,12 +11,18 @@ import java.io.IOException;
 
 
 /**
- *
+ *SaveDailyData class is used to save data about a users daily progress in
+ * the nutrition tracker.
+ * Class has a static method 'saveUser' that takes a 'UserInfo' object as a
+ * parameter and saves it to a file.
  * @author Nick
  */
 public class SaveDailyData {
     
-    
+    /**
+     * Saves 'UserInfo' object to a file.
+     * @param usr UserInfo object to save
+     */
     public static void saveUser(UserInfo usr){
         String saving_folder = ""; //temp dir solution
         //generate filename using username

@@ -12,8 +12,10 @@
 package my.nutritiontracker;
 
 /**
- *
- * @author
+ *The UserInfo class represents information about a user
+ * such as their name, weight, height, age,sex and gender.
+ * It includes methods to get and set these values as well as 
+ * calculating the recommended daily calorie intake for the user.
  */
 public class UserInfo {
 
@@ -118,7 +120,7 @@ public class UserInfo {
 
     /**
      * sets the gender
-     * @param sex 
+     * @param gender 
      */
     public void setGender(String gender) {
         this.gender = gender;
@@ -127,7 +129,7 @@ public class UserInfo {
     
 
     /**
-     * @Purpose: UserInfo constructor
+     * purpose: UserInfo constructor
      * @param name
      * @param weight
      * @param height
@@ -145,7 +147,7 @@ public class UserInfo {
     }
     /**
      *  
-     * @Purpose: Calculates the total amount of Calories for daily goal
+     * purpose: Calculates the total amount of Calories for daily goal
      * @return double totalCal
      */
     public double getCalories() {
@@ -162,7 +164,7 @@ public class UserInfo {
         return totalCal;
     }
     /**
-     * @Purpose Calculates the total amount of protein for daily goal
+     * purpose: Calculates the total amount of protein for daily goal
      * @return double totalProtein
      */
     public double getProtein() {
@@ -178,7 +180,7 @@ public class UserInfo {
         return totalProtein;
     }
      /**
-     * @Purpose Calculates the total amount of carbs for daily goal
+     * purpose: Calculates the total amount of carbs for daily goal
      * @return double totalCarbs
      */
     public double getCarbs() {
@@ -194,7 +196,7 @@ public class UserInfo {
         return totalCarbs;
     }
     /**
-     * @Purpose Calculates the total amount of Fats for daily goal
+     * purpose: Calculates the total amount of Fats for daily goal
      * @return double totalFats
      */
     public double getFat() {
