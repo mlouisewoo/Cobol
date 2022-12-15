@@ -16,7 +16,10 @@ import java.io.File;
 public class SaveUserData {
     
     
-    
+    /**
+    *This method saves user data to a JSON file.
+    *@param usr - The user data to be saved.
+    */
     public static void saveUser(UserInfo usr){
         String saving_folder = ""; //temp dir solution
         //generate filename using username
@@ -53,7 +56,14 @@ public class SaveUserData {
     
     }//saveuser
     
-    
+    /**
+    *This method saves daily user data to a JSON file.
+    *@param usr - The user data to be saved.
+    *@param cal - The user's daily caloric intake.
+    *@param prot - The user's daily protein intake.
+    *@param carb - The user's daily carbohydrate intake.
+    *@param fat - The user's daily fat intake.
+    */
     public static void saveDaily(UserInfo usr, double cal, double prot, double carb, double fat){
         String saving_folder = ""; //temp dir solution
         //generate filename using username

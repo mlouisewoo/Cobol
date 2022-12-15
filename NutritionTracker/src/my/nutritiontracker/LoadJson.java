@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- *
+ *Class purpose is to load previously saved user data.
  * @author Nick
  */
 public class LoadJson {
@@ -105,8 +105,11 @@ public class LoadJson {
             return(usr);
     }
     
-    
-    
+    /**
+    * Loads a weight list with the given name.
+    * @param name The name of the weight list to load.
+    * @return The weight list as a string.
+    */    
     public static String loadWeightList(String name){
         String saving_folder = ""; //temp dir solution
         String filename = saving_folder + name.replaceAll("\\s", "").toLowerCase() + "_weight.json";

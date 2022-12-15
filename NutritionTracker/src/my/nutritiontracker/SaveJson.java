@@ -11,12 +11,15 @@ import java.time.LocalDateTime;
 import java.io.BufferedWriter;
 
 /**
- *
+ *SaveJson is a class that contains methods to save a user's data to a JSON file
  * @author All
  */
 public class SaveJson {
     
-    
+    /**
+    *Saves a user's basic information to a JSON file.
+    *@param usr a UserInfo object containing user's information
+    */
     public static void saveUser(UserInfo usr){
         String saving_folder = ""; //temp dir solution
         //generate filename using username
@@ -59,7 +62,14 @@ public class SaveJson {
     
     
     
-    
+    /**
+    *Saves a user's daily data to a JSON file.
+    *@param usr a UserInfo object containing user's information
+    *@param cal the user's daily calorie intake
+    *@param prot the user's daily protein intake
+    *@param carb the user's daily carbohydrate intake
+    *@param fat the user's daily fat intake
+    */
     public static void saveDaily(UserInfo usr, double cal, double prot, double carb, double fat){
         String saving_folder = ""; //temp dir solution
         //generate filename using username
@@ -102,7 +112,10 @@ public class SaveJson {
     }//savedaily
     
     
-    
+    /**
+    *Saves a user's weight information to a JSON file.
+    *@param usr a UserInfo object containing user's information
+    */
     public static void saveWeight(UserInfo usr){
         String saving_folder = "";
         //generate filename using username

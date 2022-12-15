@@ -20,8 +20,8 @@ import javax.swing.plaf.ProgressBarUI;
         
 
 /**
- *
- * @author madlo
+ *Nutrition tracker contains methods to calculate macros and GUI functionality
+ * @author Madeleine Woo, Enrique Garza, Kevin Rodriguez, Nick Marencik
  */
 public class NutritionTracker extends javax.swing.JFrame {
 
