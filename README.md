@@ -5,8 +5,10 @@ their daily caloric/nutrient intake in order to maintain a healthy lifestyle
 
 ## Installation
 
-Clone the github with the https link or download our zip files.
-The application works best in Java Netbeans.
+Clone the repo with the https link (https://github.com/mlouisewoo/Cobol.git) 
+or download our zip files.
+
+Our application works best in Java Netbeans.
 
 ## Usage
 
