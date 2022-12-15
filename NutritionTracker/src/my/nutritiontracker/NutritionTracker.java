@@ -181,7 +181,7 @@ public class NutritionTracker extends javax.swing.JFrame {
         jTextField7.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jTextField7.setText("grams");
 
-        button1.setLabel("Calculate Macros");
+        button1.setLabel("Re-Calculate Macros");
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button1ActionPerformed(evt);

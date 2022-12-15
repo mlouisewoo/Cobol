@@ -330,7 +330,7 @@
                 </Component>
                 <Component class="java.awt.Button" name="button1">
                   <Properties>
-                    <Property name="label" type="java.lang.String" value="Calculate Macros"/>
+                    <Property name="label" type="java.lang.String" value="Re-Calculate Macros"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
