@@ -1,4 +1,7 @@
 # Cobol Nutrition Tracker
+
+## Description
+
 Nutrition Tracker is an application that allows a user to track
 their daily caloric/nutrient intake in order to maintain a healthy lifestyle
 
@@ -38,3 +41,7 @@ and fat count. The meal can then be added by pressing “Add Meal”.
 Click the Display Weight Progress button to show your weight progress throughout
 the time of you using Nutrition Tracker. It displays dates and your
 corresponding weight on that day.
+
+## Authors
+
+Madeleine, Nick, Enrique, Kevin
