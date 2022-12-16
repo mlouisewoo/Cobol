@@ -20,14 +20,16 @@ Run NutritionTracker.java to start the application.
 ### Goals Tab
 Input your information including name, weight, height, age, gender, and sex.
 
-The Load Data button will look for a preexisting file with the given name and 
-additional information to this person's file.
+The Load User button will look for a preexisting file with the given user name and 
+load information to the application from this person's file.
 
 The Save Data button will save the newly populated fields to a file with the
-corresponding name. If a file with the specified name doesn't exist, a new
-file will be created.
+corresponding user name. If a file with the specified name doesn't exist, a new
+file will be created. The Save Data button also calculates the Daily Goals
+the user needs to meet in terms of calories, protein, fats, and carbs
 
-Hit the Calculate Macros button to calculate the necessary macronutrients you
+Hit the Re-Calculate Macros button if you made edits the your personal information
+and to calculate the necessary macronutrients you
 need for today. 
 
 ### Daily Tracker Tab
